@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 10:51:29 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/14 13:57:09 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/14 16:30:18 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,18 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 char				*ft_strndup(const char *s1, size_t n);
 char				*ft_itoa_base(long int value, int base);
-void				ft_putaddress(unsigned long int nb);
+int					ft_putaddress(unsigned long int nb);
 void				ft_putunbr(unsigned int n);
 char				*ft_itoa_base_u_low(unsigned long int value, int base);
 char				*ft_itoa_base_u_up(unsigned long int value, int base);
+
+/*
+**	to write:
+*/
+
+int					ft_putchar_ret(char c);
+int					ft_putnbr_ret(int n, int *ctr);
+int					ft_putstr_ret(char const *s);
+int					ft_putunbr_ret(unsigned int n);
 
 #endif

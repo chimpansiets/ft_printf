@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putaddress.c                                    :+:    :+:            */
+/*   ft_putstr_ret.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/11 16:11:02 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/14 16:08:41 by svoort        ########   odam.nl         */
+/*   Created: 2019/02/14 16:30:50 by svoort         #+#    #+#                */
+/*   Updated: 2019/02/14 16:32:07 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putaddress(unsigned long int nb)
+int     ft_putstr_ret(char const *s)
 {
-	int ret;
+    int i;
 
-	ret += ft_putstr_ret("0x");
-	ret += ft_putstr_ret(ft_itoa_base_u_low(nb, 16));
+	if (s != NULL)
+	{
+		i = 0;
+		while (s[i] != '\0')
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
+        return (i);
+	}
+    return (0);
 }

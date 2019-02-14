@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putaddress.c                                    :+:    :+:            */
+/*   ft_putnbr_ret.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/11 16:11:02 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/14 16:08:41 by svoort        ########   odam.nl         */
+/*   Created: 2019/02/14 16:10:56 by svoort         #+#    #+#                */
+/*   Updated: 2019/02/14 16:29:01 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_putaddress(unsigned long int nb)
+int     ft_putnbr_ret(int n, int *ctr)
 {
-	int ret;
-
-	ret += ft_putstr_ret("0x");
-	ret += ft_putstr_ret(ft_itoa_base_u_low(nb, 16));
+    if (n == -2147483648)
+		*ctr += ft_putstr_ret("-2147483648");
+	else if (n < 0)
+	{
+		*ctr += ft_putchar_ret('-');
+		ft_putnbr(-n, ctr);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr(n / 10, ctr);
+		ft_putnbr(n % 10, ctr);
+	}
+	else
+		*ctr += ft_putchar_ret(n + '0');
 }
