@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/14 16:30:02 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/14 16:34:52 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		ft_check_conversion(va_list ap, char c)
 	else if (c == 'f')
 		printf("%f", va_arg(ap, double));
 	*/
+	return (chars);
 }
 
 int		ft_printf(const char *format, ...)
@@ -69,12 +70,12 @@ int		ft_printf(const char *format, ...)
 	return (chars);
 }
 
-// int		main(void)
-// {
-// 	char str[] = "wauwie";
-// 	char str2[] = "wow zeg";
-// 	char str3[] = "wow zeg";
-// 	ft_printf("%p, %p, %p, %u, %o, %x, %X\n", str, str2, str3, 100, 100, 346347, 346347);
-// 	printf("%p, %p, %p, %u, %o, %x, %X\n", str, str2, str3, 100, 100, 346347, 346347);
-// 	return (0);
-// }
+int		main(void)
+{
+	char str[] = "wauwie";
+	char str2[] = "wow zeg";
+	char str3[] = "wow zeg";
+	ft_printf("%p, %p, %p, %u, %o, %x, %X\n", str, str2, str3, 100, 100, 346347, 346347);
+	printf("%p, %p, %p, %u, %o, %x, %X\n", str, str2, str3, 100, 100, 346347, 346347);
+	return (0);
+}

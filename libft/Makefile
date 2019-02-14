@@ -14,7 +14,8 @@ SRCS =	ft_atoi.c ft_bzero.c ft_countwords.c ft_isalnum.c ft_isalpha.c \
 		ft_strnstr.c ft_strrchr.c ft_strrev.c ft_strsplit.c ft_strstr.c \
 		ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c ft_strndup.c \
 		ft_itoa_base.c ft_putaddress.c ft_putunbr.c ft_itoa_base_u_up.c \
-		ft_itoa_base_u_low.c
+		ft_itoa_base_u_low.c ft_putchar_ret.c ft_putnbr_ret.c ft_putstr_ret.c \
+		#ft_putunbr_ret.c
 INCLUDES = -I libft.h
 NAME = libft.a
 OBJ = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 15:47:05 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/11 15:48:54 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/14 16:33:47 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **	ft_printf.c
 */
 
-void	ft_check_conversion(va_list ap, char c);
+int     ft_check_conversion(va_list ap, char c);
 int		ft_printf(const char *format, ...);
 
 /*
