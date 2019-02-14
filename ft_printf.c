@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/14 16:34:52 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/14 16:57:31 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int		ft_check_conversion(va_list ap, char c)
 		chars += ft_putaddress(va_arg(ap, unsigned long int));
 	else if (c == 'o')
 		chars += ft_putstr_ret(ft_itoa_base(va_arg(ap, unsigned int), 8));
-	else if (c == 'u')
-		chars += ft_putunbr_ret(va_arg(ap, unsigned int));
+	//else if (c == 'u')
+		//chars += ft_putunbr_ret(va_arg(ap, unsigned int));
 	else if (c == 'x')
 		chars += ft_putstr_ret(ft_itoa_base_u_low(va_arg(ap, unsigned int), 16));
 	else if (c == 'X')
@@ -73,9 +73,17 @@ int		ft_printf(const char *format, ...)
 int		main(void)
 {
 	char str[] = "wauwie";
-	char str2[] = "wow zeg";
-	char str3[] = "wow zeg";
-	ft_printf("%p, %p, %p, %u, %o, %x, %X\n", str, str2, str3, 100, 100, 346347, 346347);
-	printf("%p, %p, %p, %u, %o, %x, %X\n", str, str2, str3, 100, 100, 346347, 346347);
+	// char str2[] = "wow zeg";
+	// char str3[] = "wow zeg";
+	// printf("ret: %i\n", ft_printf("%p, %p, %p, %o, %x, %X\n", str, str2, str3, 100, 346347, 346347));
+	// printf("ret: %i\n", printf("%p, %p, %p, %o, %x, %X\n", str, str2, str3, 100, 346347, 346347));
+	printf("my ret: %i\n", ft_printf("%s\n", str));
+	printf("ret: %i\n", printf("%s\n", str));
+	printf("my ret: %i\n", ft_printf("%i\n", 12345));
+	printf("ret: %i\n", printf("%i\n", 12345));
+	printf("my ret: %i\n", ft_printf("%o\n", 12345));
+	printf("ret: %i\n", printf("%o\n", 12345));
+	printf("my ret: %i\n", ft_printf("%x\n", 12345));
+	printf("ret: %i\n", printf("%x\n", 12345));
 	return (0);
 }

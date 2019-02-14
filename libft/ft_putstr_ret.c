@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/14 16:30:50 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/14 16:32:58 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/14 16:50:54 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int     ft_putstr_ret(char const *s)
 			ft_putchar(s[i]);
 			i++;
 		}
-        return (i);
+        return (i - 1);
 	}
     return (0);
 }
