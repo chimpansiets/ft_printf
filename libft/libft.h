@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 10:51:29 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/16 12:49:38 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/16 12:55:50 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ int					ft_putchar_ret(char c);
 int					ft_putstr_ret(char const *s);
 void				ft_putunbr_ret(unsigned int n, int *ctr);
 void				ft_putnbr_ret(int n, int *ctr);
-void				ft_putdouble_ret(double nb, int prec, int sign);
+int					ft_putdouble_ret(double nb, int prec, int sign);
 
 #endif

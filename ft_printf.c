@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/16 12:50:04 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/16 12:55:02 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_check_conversion(va_list ap, char c)
 	else if (c == 'X')
 		chars += ft_putstr_ret(ft_itoa_base_u_up(va_arg(ap, unsigned int), 16));
 	else if (c == 'f')
-		ft_putdouble_ret(va_arg(ap, double), 6, 0);
+		chars += ft_putdouble_ret(va_arg(ap, double), 6, 0);
 	//printf("\n char ret: %i\n", chars);
 	return (chars);
 }
@@ -87,7 +87,7 @@ int		main(void)
 	// printf("ret: %i\n", printf("%x\n", 12345));
 	// printf("my ret: %i\n", ft_printf("%x\n", 12345));
 	// printf("ret: %i\n", printf("%x\n", 12345));
-	//printf("my ret: %i\n", ft_printf("%f\n", 42.67));
-	printf("ret: %i\n", printf("%f\n", -42.5));
+	printf("my ret: %i\n", ft_printf("%f\n", 42.67));
+	printf("ret: %i\n", printf("%f\n", 42.67));
 	return (0);
 }

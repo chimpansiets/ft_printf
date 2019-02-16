@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/16 12:21:17 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/16 12:49:04 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/16 12:56:42 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	printradix(double nb, int prec, char *buf)
 	return (size);
 }
 
-void		ft_putdouble_ret(double nb, int prec, int sign)
+int			ft_putdouble_ret(double nb, int prec, int sign)
 {
 	char	buf[MAX_DBL];
 	int		size;
