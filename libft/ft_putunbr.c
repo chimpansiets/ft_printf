@@ -6,21 +6,21 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 16:57:40 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/11 17:01:13 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/16 11:57:28 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putunbr(unsigned int n)
+void	ft_putunbr_ret(unsigned int n, int *ctr)
 {
 	if (n > 4294967295)
-		ft_putstr("4294967295");
+		*ctr += ft_putstr_ret("4294967295");
 	else if (n >= 10)
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		ft_putnbr_ret(n / 10, ctr);
+		ft_putnbr_ret(n % 10, ctr);
 	}
 	else
-		ft_putchar(n + '0');
+		*ctr += ft_putchar_ret(n + '0');
 }

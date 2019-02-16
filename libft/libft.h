@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 10:51:29 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/14 16:47:12 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/16 12:49:38 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <float.h>
+
+# define MAX_DBL (8 + DBL_MANT_DIG)
 
 typedef	struct		s_list
 {
@@ -98,7 +101,8 @@ char				*ft_itoa_base_u_low(unsigned long int value, int base);
 char				*ft_itoa_base_u_up(unsigned long int value, int base);
 int					ft_putchar_ret(char c);
 int					ft_putstr_ret(char const *s);
-int					ft_putunbr_ret(unsigned int n);
+void				ft_putunbr_ret(unsigned int n, int *ctr);
 void				ft_putnbr_ret(int n, int *ctr);
+void				ft_putdouble_ret(double nb, int prec, int sign);
 
 #endif

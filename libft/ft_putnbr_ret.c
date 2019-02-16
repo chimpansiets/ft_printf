@@ -6,13 +6,13 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/14 16:10:56 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/14 16:58:52 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/16 11:56:35 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void     ft_putnbr_ret(int n, int *ctr)
+void	ft_putnbr_ret(int n, int *ctr)
 {
     if (n == -2147483648)
 		*ctr += ft_putstr_ret("-2147483648");
