@@ -1,4 +1,3 @@
-TODO:
  - printf returns number of characters printed, without the trailing '\0'
  - printf returns a negative value if an ouput error occurs.
  - int	ft_printf(const char *format, ...);
@@ -51,3 +50,10 @@ stdarg example:
              decimal point appears, at least one digit appears before it.
 
 			 The above must work with the l and L flags.
+
+
+TODO:
+ - the following flags: hh, h, l and ll. 
+ 	l and L ony with %f, the rest with all conversions (diouxX);
+ - minimum field width.
+ - precision.

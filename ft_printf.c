@@ -6,15 +6,18 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/16 12:55:02 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/17 14:34:44 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/* 
-** TODO: Write duplicates for all putstr, putchar functions etc. So that it
-** can know how many characters have been printed to the output.
+/*
+**	TODO:
+**	- minimum field with.
+**	- precision.
+**	- the following flags: hh, h, l and ll. 
+**		l and L ony with %f, the rest with all conversions (diouxX);
 */
 
 int		ft_check_conversion(va_list ap, char c)
@@ -49,6 +52,8 @@ int		ft_printf(const char *format, ...)
 	va_list ap;
 	char	*ptr;
 	int		chars;
+	//int		width;
+	//int		prec;
 
 	va_start(ap, format);
 	ptr = (char *)format;
@@ -58,36 +63,50 @@ int		ft_printf(const char *format, ...)
 		if (*ptr == '%')
 		{
 			ptr++;
+			if (ft_isdigit(*ptr))
+			{
+				
+			}
 			chars += ft_check_conversion(ap, *ptr);
 		}
 		else
 			write(1, ptr, 1);
 		ptr++;
-		if (*ptr != '\0')
+		if (*ptr != '\0' && *ptr != '%')
 			chars++;
 	}
 	va_end(ap);
 	return (chars);
 }
 
-int		main(void)
-{
-	//char str[] = "wauwie";
-	// char str2[] = "wow zeg";
-	// char str3[] = "wow zeg";
-	// printf("ret: %i\n", ft_printf("%p, %p, %p, %o, %x, %X\n", str, str2, str3, 100, 346347, 346347));
-	// printf("ret: %i\n", printf("%p, %p, %p, %o, %x, %X\n", str, str2, str3, 100, 346347, 346347));
-	// printf("my ret: %i\n", ft_printf("%p\n", str));
-	// printf("ret: %i\n", printf("%p\n", str));
-	// printf("my ret: %i\n", ft_printf("%i\n", -12345));
-	// printf("ret: %i\n", printf("%i\n", -12345));
-	// printf("my ret: %i\n", ft_printf("%o\n", 12345));
-	// printf("ret: %i\n", printf("%o\n", 12345));
-	// printf("my ret: %i\n", ft_printf("%x\n", 12345));
-	// printf("ret: %i\n", printf("%x\n", 12345));
-	// printf("my ret: %i\n", ft_printf("%x\n", 12345));
-	// printf("ret: %i\n", printf("%x\n", 12345));
-	printf("my ret: %i\n", ft_printf("%f\n", 42.67));
-	printf("ret: %i\n", printf("%f\n", 42.67));
-	return (0);
-}
+// int		main(void)
+// {
+// 	char str[] = "wauwie";
+// 	char str2[] = "wow zeg";
+// 	char str3[] = "wow zeg";
+// 	printf("my ret: %i\n", ft_printf("%p, %p, %p\n", str, str2, str3));
+// 	printf("ret: %i\n", printf("%p, %p, %p\n", str, str2, str3));
+// 	printf("-------------\n");
+// 	printf("my ret: %i\n", ft_printf("%p\n", str));
+// 	printf("ret: %i\n", printf("%p\n", str));
+// 	printf("-------------\n");
+// 	printf("my ret: %i\n", ft_printf("%i\n", 12345));
+// 	printf("ret: %i\n", printf("%i\n", 12345));
+// 	printf("-------------\n");
+// 	printf("my ret: %i\n", ft_printf("%o\n", 12345));
+// 	printf("ret: %i\n", printf("%o\n", 12345));
+// 	printf("-------------\n");
+// 	printf("my ret: %i\n", ft_printf("%x\n", 12345));
+// 	printf("ret: %i\n", printf("%x\n", 12345));
+// 	printf("-------------\n");
+// 	printf("my ret: %i\n", ft_printf("%x\n", 12345));
+// 	printf("ret: %i\n", printf("%x\n", 12345));
+// 	printf("-------------\n");
+// 	printf("my ret: %i\n", ft_printf("%f\n", 42.67));
+// 	printf("ret: %i\n", printf("%f\n", 42.67));
+// 	printf("-------------\n");
+// 	printf("my ret: %i\n", ft_printf("%x\n", 346347));
+// 	printf("ret: %i\n", printf("%x\n", 346347));
+// 	printf("-------------\n");
+// 	return (0);
+// }

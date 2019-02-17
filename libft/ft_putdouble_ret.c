@@ -6,11 +6,12 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/16 12:21:17 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/16 12:56:42 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/16 12:59:32 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h> //remove
 
 static int	printradix(double nb, int prec, char *buf)
 {
@@ -60,5 +61,5 @@ int			ft_putdouble_ret(double nb, int prec, int sign)
 	if (prec > 0)
 		size += printradix(nb, prec, buf + size);
 	buf[size] = '\0';
-	return (write(1, buf, size), ft_putchar('\n'));
+	return (write(1, buf, size));
 }
