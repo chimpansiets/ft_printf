@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/17 14:34:44 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/17 14:40:32 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int		ft_printf(const char *format, ...)
 	va_list ap;
 	char	*ptr;
 	int		chars;
-	//int		width;
-	//int		prec;
+	int		width;
+	int		prec;
 
 	va_start(ap, format);
 	ptr = (char *)format;
