@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 15:47:05 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/18 13:50:04 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/18 15:39:14 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int		ft_printf(const char *format, ...);
 */
 
 int		ft_conversion_c(char c, int width);
+void	ft_conversion_i(int nb, int *chars, int width);
+int		ft_conversion_s(char *str, int width);
+int		ft_conversion_p(unsigned long int nb, int width);
 
 /*
 **	check_width.c

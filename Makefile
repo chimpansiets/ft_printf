@@ -6,7 +6,7 @@
 #    By: svoort <svoort@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 14:08:33 by svoort         #+#    #+#                 #
-#    Updated: 2019/02/18 13:50:26 by svoort        ########   odam.nl          #
+#    Updated: 2019/02/18 14:10:53 by svoort        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ exec:
 	@$(CLEANLIB)
 	@$(CC) -c $(CFLAGS) $(SRCS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(EXECNAME)
+	@./$(EXECNAME)
 
 # $(NAME):
 # 	$(MKLIB)

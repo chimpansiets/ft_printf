@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/18 13:56:32 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/18 13:59:44 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/18 14:00:40 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_lenofint(int	nb)
 		len++;
 		nb++;
 	}
-	while (nb > 10)
+	while (nb > 0)
 	{
 		nb = nb / 10;
 		len++;
