@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   conversions1.c                                     :+:    :+:            */
+/*   check_width.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/11 15:49:37 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/18 13:58:38 by svoort        ########   odam.nl         */
+/*   Created: 2019/02/18 13:22:02 by svoort         #+#    #+#                */
+/*   Updated: 2019/02/18 13:41:41 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_conversion_c(char c, int width)
+int		check_width(char **str)
 {
-	int	ret;
+	char	*c_width;
+	int		i;
 
-	ret = 0;
-	while(width > 1)
+	i = 0;
+	while (ft_isdigit(str[0][i]))
+		i++;
+	c_width = malloc(sizeof(char) * i + 1);
+	i = 0;
+	while (ft_isdigit(str[0][i]))
 	{
-		ret += ft_putchar_ret(' ');
-		width--;
+		c_width[i] = str[0][i];
+		i++;
 	}
-	ret += ft_putchar_ret(c);
-	return (ret);
-}
-
-int		ft_conversion_i(int nb, int *chars, int width)
-{
-	if (lenofint(nb) < width)
+	while (ft_isdigit(**str))
+		(*str)++;
+	c_width[i] = '\0';
+	return (ft_atoi(c_width));
 }

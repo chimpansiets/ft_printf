@@ -6,13 +6,13 @@
 #    By: svoort <svoort@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/11 14:08:33 by svoort         #+#    #+#                 #
-#    Updated: 2019/02/14 13:25:13 by svoort        ########   odam.nl          #
+#    Updated: 2019/02/18 13:50:26 by svoort        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 EXECNAME = ft_printf
-SRCS = ft_printf.c
+SRCS = ft_printf.c check_width.c conversions1.c
 CFLAGS = -Wall -Wextra -Werror
 MKLIB = make -C libft/ fclean && make -C libft/
 CLEANLIB = make -C libft/ clean

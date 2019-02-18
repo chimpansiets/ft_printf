@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   conversions1.c                                     :+:    :+:            */
+/*   ft_lenofint.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/11 15:49:37 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/18 13:58:38 by svoort        ########   odam.nl         */
+/*   Created: 2019/02/18 13:56:32 by svoort         #+#    #+#                */
+/*   Updated: 2019/02/18 13:59:44 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_conversion_c(char c, int width)
+int		ft_lenofint(int	nb)
 {
-	int	ret;
+	int len;
 
-	ret = 0;
-	while(width > 1)
+	len = 0;
+	if (nb < 0)
 	{
-		ret += ft_putchar_ret(' ');
-		width--;
+		len++;
+		nb++;
 	}
-	ret += ft_putchar_ret(c);
-	return (ret);
-}
-
-int		ft_conversion_i(int nb, int *chars, int width)
-{
-	if (lenofint(nb) < width)
+	while (nb > 10)
+	{
+		nb = nb / 10;
+		len++;
+	}
+	return (len);
 }
