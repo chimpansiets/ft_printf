@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/18 15:30:56 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/18 16:15:38 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int		ft_check_conversion(va_list ap, char c, int width)
 	else if (c == 's')
 		chars += ft_conversion_s(va_arg(ap, char *), width);
 	else if (c == 'p')
-		chars += ft_conversion_p(va_arg(ap, unsigned long int));
+		chars += ft_conversion_p(va_arg(ap, unsigned long int), width);
 	else if (c == 'o')
-		chars += ft_putstr_ret(ft_itoa_base(va_arg(ap, unsigned int), 8));
+		chars += ft_conversion_o(va_arg(ap, unsigned int), width);
 	else if (c == 'u')
 		ft_putunbr_ret(va_arg(ap, unsigned int), &chars);
 	else if (c == 'x')
@@ -80,9 +80,9 @@ int		ft_printf(const char *format, ...)
 	return (chars);
 }
 
-int		main(void)
-{
-char str[] = "wauwie";
+// int		main(void)
+// {
+// char str[] = "wauwie";
 // char str2[] = "wow zeg";
 // char str3[] = "wow zeg";
 // printf("-------------\n");
@@ -110,8 +110,8 @@ char str[] = "wauwie";
 // printf("my ret: %i\n", ft_printf("%x\n", 346347));
 // printf("ret: %i\n", printf("%x\n", 346347));
 // printf("-------------\n");
-	printf("my ret: %i\n", ft_printf("%20p\n", str));
-	printf("ret: %i\n", printf("%20p\n", str));
-	printf("-------------\n");
-	return (0);
-}
+// 	printf("my ret: %i\n", ft_printf("%10o\n", 123));
+// 	printf("ret: %i\n", printf("%10o\n", 123));
+// 	printf("-------------\n");
+// 	return (0);
+// }

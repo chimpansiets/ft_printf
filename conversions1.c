@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 15:49:37 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/18 15:40:14 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/18 15:54:13 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,32 @@ int		ft_conversion_p(unsigned long int nb, int width)
 	ret = 0;
 	output = ft_itoa_base_u_low(nb, 16);
 	len = ft_strlen(output);
+	while (len + 2 < width)
+	{
+		ret += ft_putchar_ret(' ');
+		width--;
+	}
+	ret += ft_putstr_ret("0x");
+	ret += ft_putstr_ret(output);
+	free(output);
+	return (ret);
+}
+
+int		ft_conversion_o(unsigned int nb, int width)
+{
+	int		ret;
+	int		len;
+	char	*output;
+
+	ret = 0;
+	output = ft_itoa_base_u_low(nb, 8);
+	len = ft_strlen(output);
 	while (len < width)
 	{
 		ret += ft_putchar_ret(' ');
 		width--;
 	}
-
+	ret += ft_putstr_ret(output);
+	free(output);
+	return (ret);
 }
