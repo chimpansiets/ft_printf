@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/18 16:15:38 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/22 10:40:51 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,68 +50,69 @@ int		ft_check_conversion(va_list ap, char c, int width)
 
 int		ft_printf(const char *format, ...)
 {
-	va_list ap;
-	char	*ptr;
-	int		chars;
-	int		width;
-	//int		prec;
+	va_list		ap;
+	t_printf	p;
+	int			chars;
 
 	va_start(ap, format);
-	ptr = (char *)format;
+	p.format = (char *)format;
 	chars = 0;
-	width = 0;
-	while (*ptr)
+	p.flags = 0;
+	while (*p.format)
 	{
-		if (*ptr == '%')
+		if (*p.format == '%')
 		{
-			ptr++;
-			if (ft_isdigit(*ptr))
-				width = check_width(&ptr);
-			chars += ft_check_conversion(ap, *ptr, width);
-			width = 0;
+			p.format++;
+			// if (!(store_flags(&signs, ptr)))
+			// 	return (-1);
+			if (ft_isdigit(*p.format))
+				PADDING = check_width(&p);
+			chars += ft_check_conversion(ap, *p.format, PADDING);
+			PADDING = 0;
 		}
 		else
-			write(1, ptr, 1);
-		ptr++;
-		if (*ptr != '\0' && *ptr != '%')
+			write(1, p.format, 1);
+		p.format++;
+		if (*p.format != '\0' && *p.format != '%')
 			chars++;
 	}
 	va_end(ap);
 	return (chars);
 }
 
-// int		main(void)
-// {
-// char str[] = "wauwie";
-// char str2[] = "wow zeg";
-// char str3[] = "wow zeg";
-// printf("-------------\n");
-// printf("my ret: %i\n", ft_printf("%p, %p, %p\n", str, str2, str3));
-// printf("ret: %i\n", printf("%p, %p, %p\n", str, str2, str3));
-// printf("-------------\n");
-// printf("my ret: %i\n", ft_printf("%p\n", str));
-// printf("ret: %i\n", printf("%p\n", str));
-// printf("-------------\n");
-// printf("my ret: %i\n", ft_printf("%i\n", 12345));
-// printf("ret: %i\n", printf("%i\n", 12345));
-// printf("-------------\n");
-// printf("my ret: %i\n", ft_printf("%o\n", 12345));
-// printf("ret: %i\n", printf("%o\n", 12345));
-// printf("-------------\n");
-// printf("my ret: %i\n", ft_printf("%x\n", 12345));
-// printf("ret: %i\n", printf("%x\n", 12345));
-// printf("-------------\n");
-// printf("my ret: %i\n", ft_printf("%x\n", 12345));
-// printf("ret: %i\n", printf("%x\n", 12345));
-// printf("-------------\n");
-// printf("my ret: %i\n", ft_printf("%f\n", 42.67));
-// printf("ret: %i\n", printf("%f\n", 42.67));
-// printf("-------------\n");
-// printf("my ret: %i\n", ft_printf("%x\n", 346347));
-// printf("ret: %i\n", printf("%x\n", 346347));
-// printf("-------------\n");
-// 	printf("my ret: %i\n", ft_printf("%10o\n", 123));
-// 	printf("ret: %i\n", printf("%10o\n", 123));
-// 	printf("-------------\n");
-// 	return (0);
-// }
+int		main(void)
+{
+	char	str[] = "wauwie";
+	char	str2[] = "wow zeg";
+	char	str3[] = "wow zeg";
+
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%p, %p, %p\n", str, str2, str3));
+	printf("ret: %i\n", printf("%p, %p, %p\n", str, str2, str3));
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%p\n", str));
+	printf("ret: %i\n", printf("%p\n", str));
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%i\n", 12345));
+	printf("ret: %i\n", printf("%i\n", 12345));
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%o\n", 12345));
+	printf("ret: %i\n", printf("%o\n", 12345));
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%x\n", 12345));
+	printf("ret: %i\n", printf("%x\n", 12345));
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%x\n", 12345));
+	printf("ret: %i\n", printf("%x\n", 12345));
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%f\n", 42.67));
+	printf("ret: %i\n", printf("%f\n", 42.67));
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%x\n", 346347));
+	printf("ret: %i\n", printf("%x\n", 346347));
+	printf("-------------\n");
+	printf("my ret: %i\n", ft_printf("%10o\n", 123));
+	printf("ret: %i\n", printf("%10o\n", 123));
+	printf("-------------\n");
+	return (0);
+}
