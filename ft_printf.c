@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/22 14:01:25 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/22 16:57:36 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ int		main(void)
 	printf("my ret: %i\n", ft_printf("%f\n", 42.67));
 	printf("ret: %i\n", printf("%f\n", 42.67));
 	printf("-------------\n");
-	printf("my ret: %i\n", ft_printf("%x\n", 346347));
-	printf("ret: %i\n", printf("%x\n", 346347));
+	printf("my ret: %i\n", ft_printf("%10s\n", str));
+	printf("ret: %i\n", printf("%10s\n", str));
 	printf("-------------\n");
 	printf("my ret: %i\n", ft_printf("%10o\n", 123));
 	printf("ret: %i\n", printf("%10o\n", 123));
