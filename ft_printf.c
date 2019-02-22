@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/22 10:40:51 by svoort        ########   odam.nl         */
+/*   Updated: 2019/02/22 14:01:25 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		main(void)
 {
 	char	str[] = "wauwie";
 	char	str2[] = "wow zeg";
-	char	str3[] = "wow zeg";
+	char	str3[] = "kanonnen";
 
 	printf("-------------\n");
 	printf("my ret: %i\n", ft_printf("%p, %p, %p\n", str, str2, str3));
