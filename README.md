@@ -18,8 +18,7 @@ following flags       : '#' '0' '-' '+' ' ' 'hh' 'h' 'll' 'l' 'L'
 
 ## Bugs
 
-* Positional arguments ($)
-* n conversion
+* Trying to use positional arguments with the '$' specifier will get you stuck in an infinite loop... ;(
 
 ## Acknowledgments
 
