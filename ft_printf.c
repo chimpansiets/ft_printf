@@ -5,77 +5,144 @@
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/11 11:32:01 by svoort         #+#    #+#                */
-/*   Updated: 2019/02/22 16:57:36 by svoort        ########   odam.nl         */
+/*   Created: 2019/02/22 19:26:32 by svoort         #+#    #+#                */
+/*   Updated: 2019/03/13 16:31:32 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-/*
-**	TODO:
-**	- minimum field with.
-**	- precision.
-**	- the following flags: hh, h, l and ll. 
-**		l and L ony with %f, the rest with all conversions (diouxX);
-*/
-
-int		ft_check_conversion(va_list ap, char c, int width)
+int				flbax(char *s, va_list *ar2, int *i)
 {
-	(void)width;
-	int chars;
-
-	chars = 0;
-	if (c == 'c')
-		chars += ft_conversion_c((char)va_arg(ap, int), width);
-	else if (c == 'i' || c == 'd')
-		ft_conversion_i(va_arg(ap, int), &chars, width);
-	else if (c == 's')
-		chars += ft_conversion_s(va_arg(ap, char *), width);
-	else if (c == 'p')
-		chars += ft_conversion_p(va_arg(ap, unsigned long int), width);
-	else if (c == 'o')
-		chars += ft_conversion_o(va_arg(ap, unsigned int), width);
-	else if (c == 'u')
-		ft_putunbr_ret(va_arg(ap, unsigned int), &chars);
-	else if (c == 'x')
-		chars += ft_putstr_ret(ft_itoa_base_u_low(va_arg(ap, unsigned int), 16));
-	else if (c == 'X')
-		chars += ft_putstr_ret(ft_itoa_base_u_up(va_arg(ap, unsigned int), 16));
-	else if (c == 'f')
-		chars += ft_putdouble_ret(va_arg(ap, double), 6, 0);
-	//printf("\n char ret: %i\n", chars);
-	return (chars);
+	if (ar2)
+	{
+		if_ar2(&i, s, ar2);
+		return (1);
+	}
+	while (*s)
+	{
+		if (*s == '%' && (*s))
+		{
+			s++;
+			while (OPER(*s) && OPE2(*s) && OPE3(*s) && *s)
+			{
+				if (*s > 47 && *s < 58 && *(s + 1) == '$')
+				{
+					i[15] = 1;
+					return (1);
+				}
+				s++;
+			}
+		}
+		s++;
+	}
+	return (0);
 }
 
-int		ft_printf(const char *format, ...)
+static	void	flg_sec(char *s, int *i, va_list *ar2)
 {
-	va_list		ap;
-	t_printf	p;
-	int			chars;
+	int ret;
 
-	va_start(ap, format);
-	p.format = (char *)format;
-	chars = 0;
-	p.flags = 0;
-	while (*p.format)
+	ret = flg_sec_check(&i, s);
+	if (!(ret) && s[*i] == '*' && (flbax(s, ar2, i)))
 	{
-		if (*p.format == '%')
+		i[10] = va_arg(*ar2, int);
+		if (((i[10]) < 0))
 		{
-			p.format++;
-			// if (!(store_flags(&signs, ptr)))
-			// 	return (-1);
-			if (ft_isdigit(*p.format))
-				PADDING = check_width(&p);
-			chars += ft_check_conversion(ap, *p.format, PADDING);
-			PADDING = 0;
+			i[10] *= -1;
+			i[3] = 2;
 		}
-		else
-			write(1, p.format, 1);
-		p.format++;
-		if (*p.format != '\0' && *p.format != '%')
-			chars++;
 	}
-	va_end(ap);
-	return (chars);
+	else if (!(ret) && s[*i] > 48 && s[*i] < 58)
+	{
+		i[10] = ft_atoi(s + *i);
+		*i += ft_nbrlen(i[10], 1) - 1;
+	}
+	else if (!(ret) && s[*i] == '.')
+		if_dot(s, &i, ar2);
+}
+
+static	void	flg_fir(char *s, va_list *ar, int *i, va_list *ar2)
+{
+	while (FLSIZ(s[*i]) || FL2(s[*i]))
+	{
+		if (s[*i] == ' ' && !i[2])
+			i[2] = 1;
+		else if (s[*i] == '+')
+			i[2] = 2;
+		else if (s[*i] == '-')
+			i[3] = 2;
+		else if (s[*i] == '0' && !i[3])
+			i[3] = 1;
+		else if (s[*i] == '#')
+			i[4] = 1;
+		else if (s[*i] == 'L')
+			i[5] = 1;
+		else if (s[*i] == 'z')
+			i[6] = 1;
+		else if (s[*i] == 'l' && s[*i + 1] != 'l')
+			i[7] = 1;
+		else
+			flg_sec(s, i, ar2);
+		*i += 1;
+	}
+	ft_prfoper(s, ar, i);
+}
+
+static	int		ft_sprintf(char *str, va_list varg, int *i)
+{
+	va_list		tmp[2];
+
+	while (str[*i])
+	{
+		if (str[*i] != '%')
+			i[1] += write(1, &str[*i], 1);
+		else
+		{
+			read_width(&i, str, tmp, varg);
+			read_args(&i, tmp);
+			while (i[15])
+			{
+				i[15] += 1;
+				i[i[15]] = 0;
+			}
+			i[15] = 1;
+			i[11] = -1;
+			flg_fir((char *)str, tmp, i, &tmp[1]);
+		}
+		*i += 1;
+	}
+	va_end(varg);
+	return (i[1]);
+}
+
+/*
+**	Loops through format, whenever it encounters a '%' character,
+**	it reads the varg. Stores all flags into an integer array of size 19.
+*/
+
+int				ft_printf(const char *format, ...)
+{
+	int			i[19];
+	va_list		varg;
+
+	i[0] = 0;
+	i[1] = 0;
+	va_start(varg, format);
+	if (flbax((char *)format, 0, i))
+		return (ft_sprintf((char *)format, varg, i));
+	while (format[i[0]])
+	{
+		if (format[i[0]] != '%')
+			i[1] += write(1, &format[i[0]], 1);
+		else
+		{
+			set_args_to_zero(&i);
+			i[11] = -1;
+			flg_fir((char *)format, &varg, i, &varg);
+		}
+		i[0] += 1;
+	}
+	va_end(varg);
+	return (i[1]);
 }
