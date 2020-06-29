@@ -17,7 +17,7 @@ FUN		=	ft_nbrlen.c ft_printf.c ft_prfoper.c ft_atoi.c ft_prfnbr.c \
 			ft_strdup.c ft_joinfree.c ft_dblhex.c ft_qstr.c helper1.c \
 			helper2.c helper3.c helper4.c helper5.c helper6.c helper7.c \
 			
-FUNDIR	=	./
+FUNDIR	=	./srcs/
 
 GFLG	=	gcc -Wall -Wextra -Werror -c
 
